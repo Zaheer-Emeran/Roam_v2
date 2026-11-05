@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc67acaddcdc92b4ca4a2645f80e5902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Building
+  build_Time: 3
+  grey_Material: {fileID: 2100000, guid: 9075c9dad182aea48a52b5d30c746ed4, type: 2}
