@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -666,7 +667,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.4768188, y: -0, z: -0, w: 0.8790016}
-  m_LocalPosition: {x: 0, y: 7.35, z: -7.25}
+  m_LocalPosition: {x: 6.2, y: 7.35, z: -0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -716,6 +717,25 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcb3e544d5c2e64d8057bcf2e32f063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Movement
+  speed: 10
+  rotate_Speed: 90
+  zoom_Speed: 100
+  min_XZ: {x: -10, y: -10}
+  max_XZ: {x: 30, y: 30}
+  min_Height: 3
+  max_Height: 25
 --- !u!1 &354295813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,8 +1044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a45646311f63a4ca54e613fa6b28af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Building_Grid
-  width: 10
-  height: 10
+  width: 25
+  height: 25
 --- !u!1 &789973701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,9 +1867,9 @@ Transform:
   m_GameObject: {fileID: 1399138991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.99999, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 7.5, y: -4.99999, z: 7.5}
+  m_LocalScale: {x: 100, y: 10, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1037439280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

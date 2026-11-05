@@ -18,3 +18,4 @@ MonoBehaviour:
   <Rock>k__BackingField: 5
   <Model>k__BackingField: {fileID: 4460215121729462029, guid: e2f0be46e5912f04ca6a58e5fb8a9260, type: 3}
   <Place_Instantly>k__BackingField: 1
+  <Drag_Place>k__BackingField: 1

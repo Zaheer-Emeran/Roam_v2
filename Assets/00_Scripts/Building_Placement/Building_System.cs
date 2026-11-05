@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Building_System : MonoBehaviour
 {
@@ -107,7 +108,8 @@ private void Handle_Preview(Vector3 mouse_World_Position)
     {
         preview.Change_State(Building_Preview.Building_Preview_State.POSITIVE);
         // DRAG: pathways place while the button is held, other buildings only on the click
-        bool place_Click = preview.Data.Drag_Place ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0);
+        bool place_Click = !EventSystem.current.IsPointerOverGameObject()
+        && (preview.Data.Drag_Place ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0));
         if (place_Click)
         {
             Place_Building(build_Positions);
