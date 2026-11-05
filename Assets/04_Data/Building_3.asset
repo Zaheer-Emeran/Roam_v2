@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Building_3
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
   <Description>k__BackingField: Building Description 3
-  <Cost>k__BackingField: 3
+  <Cost>k__BackingField: 25
+  <Wood>k__BackingField: 20
+  <Rock>k__BackingField: 20
   <Model>k__BackingField: {fileID: 4460215121729462029, guid: 85889224e3f487543ab38bd3703fcd16, type: 3}
+  <Place_Instantly>k__BackingField: 0

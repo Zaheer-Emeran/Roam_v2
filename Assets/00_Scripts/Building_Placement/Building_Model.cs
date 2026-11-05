@@ -23,12 +23,12 @@ public class Building_Model : MonoBehaviour
         {
             if (col.CompareTag("Pathway"))
             {
-                Debug.Log("Pathway found next to " + name);
+                // Debug.Log("Pathway found next to " + name);
                 return true;
             }
         }
     }
-    Debug.Log("No pathway next to " + name);
+    // Debug.Log("No pathway next to " + name);
     return false;
 }
 

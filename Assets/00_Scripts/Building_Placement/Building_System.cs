@@ -7,12 +7,13 @@ public class Building_System : MonoBehaviour
 {
         public const float Cell_Size = 1f;
 
-        [SerializeField] private Building_Data building_Data1;
-        [SerializeField] private Building_Data building_Data2;
-        [SerializeField] private Building_Data building_Data3;
+        // [SerializeField] private Building_Data building_Data1;
+        // [SerializeField] private Building_Data building_Data2;
+        // [SerializeField] private Building_Data building_Data3;
         [SerializeField] private Building_Preview preview_Prefab;
         [SerializeField] private Building building_Prefab;
         [SerializeField] private Building_Grid grid;
+        [SerializeField] private City_Resources city_resources;
         private Building_Preview preview;
 
         private void Update()
@@ -25,20 +26,20 @@ public class Building_System : MonoBehaviour
             else
             {
             
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                preview = CreatePreview(building_Data1, mousePos);
-            }
+            // if (Input.GetKeyDown(KeyCode.Alpha1))
+            // {
+            //     preview = CreatePreview(building_Data1, mousePos);
+            // }
 
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                preview = CreatePreview(building_Data2, mousePos);
-            }
+            // else if (Input.GetKeyDown(KeyCode.Alpha2))
+            // {
+            //     preview = CreatePreview(building_Data2, mousePos);
+            // }
 
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                preview = CreatePreview(building_Data3, mousePos);
-            }
+            // else if (Input.GetKeyDown(KeyCode.Alpha3))
+            // {
+            //     preview = CreatePreview(building_Data3, mousePos);
+            // }
                 
             }
         }
@@ -76,8 +77,15 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         preview.transform.position = Get_Snapped_Center_Position(build_Positions);
     }
 
+    // RESOURCES: you can only build if you have enough of every resource
+    bool can_Afford = city_resources.Talons >= preview.Data.Cost
+                && city_resources.Wood >= preview.Data.Wood
+                && city_resources.Rock >= preview.Data.Rock;
+
+
     // PATHWAY: placement is only allowed if the cells are free AND at least one checker touches an object tagged "Pathway"
-    bool can_Build = grid_Ok && preview.Building_Model.Has_Adjacent_Pathway();
+    bool can_Build = grid_Ok && preview.Building_Model.Has_Adjacent_Pathway() && can_Afford;
+
 
     if (can_Build)
     {
@@ -103,10 +111,18 @@ private void Handle_Preview(Vector3 mouse_World_Position)
     private void Place_Building(List<Vector3> building_Positions)
     {
         Building building = Instantiate(building_Prefab,preview.transform.position,Quaternion.identity);
+        // Debug.Log(preview.Data.name + " | Cost: " + preview.Data.Cost + " | " + preview.Data.Description + " | Wood: " + preview.Data.Wood + " | Wood: " + preview.Data.Rock);
+        city_resources.Change_Talons(-preview.Data.Cost);
+        city_resources.Change_Wood(-preview.Data.Wood);
+        city_resources.Change_Rock(-preview.Data.Rock);
+        
         building.Setup(preview.Data, preview.Building_Model.Rotation);
         grid.Set_Building(building, building_Positions);
         Destroy(preview.gameObject);
         preview = null;
+
+        
+
     }
 
     private Vector3 Get_Snapped_Center_Position(List<Vector3> allBuildingPositions)
