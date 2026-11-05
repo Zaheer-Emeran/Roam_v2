@@ -11,5 +11,6 @@ public class Building_Data : ScriptableObject
 
     [field: SerializeField] public Building_Model Model { get; private set; }
     [field: SerializeField] public bool Place_Instantly { get; private set; }
+    [field: SerializeField] public bool Drag_Place { get; private set; }
 
 }

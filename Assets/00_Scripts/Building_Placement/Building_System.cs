@@ -106,7 +106,9 @@ private void Handle_Preview(Vector3 mouse_World_Position)
     if (can_Build)
     {
         preview.Change_State(Building_Preview.Building_Preview_State.POSITIVE);
-        if (Input.GetMouseButtonDown(0))
+        // DRAG: pathways place while the button is held, other buildings only on the click
+        bool place_Click = preview.Data.Drag_Place ? Input.GetMouseButton(0) : Input.GetMouseButtonDown(0);
+        if (place_Click)
         {
             Place_Building(build_Positions);
             return;
@@ -134,8 +136,12 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         
         building.Setup(preview.Data, preview.Building_Model.Rotation);
         grid.Set_Building(building, building_Positions);
-        Destroy(preview.gameObject);
-        preview = null;
+        // DRAG: pathways keep the preview so you can keep placing, everything else clears it
+        if (!preview.Data.Drag_Place)
+        {
+            Destroy(preview.gameObject);
+            preview = null;
+        }
         Hide_UI();
 
         
