@@ -31,7 +31,39 @@ Transform:
   m_Children:
   - {fileID: 7499361292044901760}
   - {fileID: 970479348231329692}
+  - {fileID: 3018443241771982167}
   m_Father: {fileID: 9034269600224953704}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8574835836314373169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3018443241771982167}
+  m_Layer: 0
+  m_Name: Pathway_Checker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3018443241771982167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574835836314373169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2235437831563198663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9139703131509025944
 GameObject:
@@ -45,7 +77,7 @@ GameObject:
   - component: {fileID: 4460215121729462029}
   m_Layer: 0
   m_Name: Building_Model_1
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Building_Model
   wrapper: {fileID: 2235437831563198663}
+  pathway_Checkers:
+  - {fileID: 3018443241771982167}
+  requires_Pathway: 1
 --- !u!1001 &791908604932468855
 PrefabInstance:
   m_ObjectHideFlags: 0
