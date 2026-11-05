@@ -45,7 +45,13 @@ public class Building_System : MonoBehaviour
 
         public void Select_Building(Building_Data data)
         {
-            if (preview != null) return;
+            // Cancel the current preview first, same as right click / Esc
+            if (preview != null)
+            {
+                Destroy(preview.gameObject);
+                preview = null;
+            }
+
             preview = CreatePreview(data, GetMouseWorldPosition());
         }
 
