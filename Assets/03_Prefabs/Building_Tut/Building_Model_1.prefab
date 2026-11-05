@@ -75,6 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9034269600224953704}
   - component: {fileID: 4460215121729462029}
+  - component: {fileID: 8846695037935984675}
   m_Layer: 0
   m_Name: Building_Model_1
   m_TagString: Building
@@ -114,6 +115,27 @@ MonoBehaviour:
   pathway_Checkers:
   - {fileID: 3018443241771982167}
   requires_Pathway: 1
+--- !u!65 &8846695037935984675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9139703131509025944}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.45, z: 1}
+  m_Center: {x: 0, y: 0.59, z: 0}
 --- !u!1001 &791908604932468855
 PrefabInstance:
   m_ObjectHideFlags: 0

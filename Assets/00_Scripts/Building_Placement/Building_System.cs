@@ -76,7 +76,7 @@ private void Handle_Preview(Vector3 mouse_World_Position)
     {
         Destroy(preview.gameObject);
         preview = null;
-        description_Object.SetActive(false);
+        Hide_UI();
 
         return;
     }
@@ -136,7 +136,7 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         grid.Set_Building(building, building_Positions);
         Destroy(preview.gameObject);
         preview = null;
-        description_Object.SetActive(false);
+        Hide_UI();
 
         
 
@@ -166,5 +166,10 @@ private void Handle_Preview(Vector3 mouse_World_Position)
             Building_Preview building_Preview = Instantiate(preview_Prefab, position, Quaternion.identity);
             building_Preview.Setup(data);
             return building_Preview;   
+        }
+
+
+        public void Hide_UI(){
+            description_Object.SetActive(false);
         }
 }
