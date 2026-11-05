@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed2785c14050464e80b754afca9a801, type: 3}
   m_Name: Building_2
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
-  <Description>k__BackingField: Building Description 2
+  <Description>k__BackingField: This is a green lonk building
   <Cost>k__BackingField: 20
   <Wood>k__BackingField: 18
   <Rock>k__BackingField: 18

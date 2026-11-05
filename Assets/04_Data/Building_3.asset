@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed2785c14050464e80b754afca9a801, type: 3}
   m_Name: Building_3
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
-  <Description>k__BackingField: Building Description 3
+  <Description>k__BackingField: This is a purple L building
   <Cost>k__BackingField: 25
   <Wood>k__BackingField: 20
   <Rock>k__BackingField: 20

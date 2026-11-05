@@ -14,6 +14,12 @@ public class Building_System : MonoBehaviour
         [SerializeField] private Building building_Prefab;
         [SerializeField] private Building_Grid grid;
         [SerializeField] private City_Resources city_resources;
+
+
+        [SerializeField] private GameObject description_Object;
+        [SerializeField] private Building_Description building_Description;
+        
+
         private Building_Preview preview;
 
         private void Update()
@@ -52,6 +58,14 @@ public class Building_System : MonoBehaviour
                 Destroy(preview.gameObject);
                 preview = null;
             }
+            
+            building_Description.Set_Text(
+                "Description: " + data.Description + "\n" +
+                "Talons: " + data.Cost + "\n" +
+                "Logs: " + data.Wood + "\n" +
+                "Rocks: " + data.Rock
+            );
+            description_Object.SetActive(true);
 
             preview = CreatePreview(data, GetMouseWorldPosition());
         }
@@ -62,6 +76,8 @@ private void Handle_Preview(Vector3 mouse_World_Position)
     {
         Destroy(preview.gameObject);
         preview = null;
+        description_Object.SetActive(false);
+
         return;
     }
 
@@ -120,6 +136,7 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         grid.Set_Building(building, building_Positions);
         Destroy(preview.gameObject);
         preview = null;
+        description_Object.SetActive(false);
 
         
 

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Pathway_Dirt
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
   <Description>k__BackingField: Pathway 1
-  <Cost>k__BackingField: 4
+  <Cost>k__BackingField: 10
+  <Wood>k__BackingField: 5
+  <Rock>k__BackingField: 5
   <Model>k__BackingField: {fileID: 4460215121729462029, guid: e2f0be46e5912f04ca6a58e5fb8a9260, type: 3}
   <Place_Instantly>k__BackingField: 1
