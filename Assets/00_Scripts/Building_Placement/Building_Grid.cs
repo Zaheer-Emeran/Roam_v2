@@ -31,6 +31,17 @@ public class Building_Grid : MonoBehaviour
         }
     }
 
+    public void Remove_Building(Building building)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                grid[x, y].Clear_If(building);
+            }
+        }
+    }
+
     private (int x, int y) World_To_Grid_Position(Vector3 world_position)
     {
         int x = Mathf.FloorToInt((world_position - transform.position).x / Building_System.Cell_Size);
@@ -110,5 +121,10 @@ public class Building_Grid_Cell
     public bool Is_Empty()
     {
         return building == null;
+    }
+
+    public void Clear_If(Building b)
+    {
+        if (building == b) building = null;
     }
 }

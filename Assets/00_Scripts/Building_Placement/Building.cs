@@ -14,7 +14,8 @@ public class Building : MonoBehaviour
      // TIMER: remembers the real materials so they can be restored later
     private Renderer[] renderers;
     private Material[][] original_Materials;
-
+    public Building_Data Data => data;
+    
     public void Setup(Building_Data data, float rotation)
     {
         this.data = data;
