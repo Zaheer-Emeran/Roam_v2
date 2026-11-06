@@ -62,7 +62,7 @@ public class Building_System : MonoBehaviour
                 preview = null;
             }
             
-            building_Description.Set_Text(
+            building_Description.Set_Description(
                 "Description: " + data.Description + "\n\n" +
                 "Cost: " +  "\n" +
                 data.Cost_Compiler()

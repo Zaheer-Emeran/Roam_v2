@@ -3,6 +3,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public string Description => data.Description;
+
     public int Cost => data.Cost;
 
     [SerializeField] private float build_Time = 5f;
@@ -15,7 +16,7 @@ public class Building : MonoBehaviour
     private Renderer[] renderers;
     private Material[][] original_Materials;
     public Building_Data Data => data;
-    
+
     public void Setup(Building_Data data, float rotation)
     {
         this.data = data;

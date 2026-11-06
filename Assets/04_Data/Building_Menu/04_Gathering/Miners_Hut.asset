@@ -19,3 +19,4 @@ MonoBehaviour:
   <Model>k__BackingField: {fileID: 4460215121729462029, guid: be2e7384e68d6e244b1056b065faec58, type: 3}
   <Place_Instantly>k__BackingField: 0
   <Drag_Place>k__BackingField: 0
+  <Production>k__BackingField: {fileID: 11400000, guid: 341866a0661639044b46dcf8459cb289, type: 2}

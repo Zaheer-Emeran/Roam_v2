@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
+
 
 [DefaultExecutionOrder(-10)]
 public class Building_Manager : MonoBehaviour
 {
     [SerializeField] private GameObject building_Manager_Object_UI;
     [SerializeField] private Building_Description building_Description;
+    [SerializeField] private TMP_Text production_Text_UI;
+
     [SerializeField] private Building_Grid grid;
     [SerializeField] private City_Resources city_resources;
+    [SerializeField] private GameObject workers_Object;
 
     private Building selected_Building;
 
@@ -57,7 +62,13 @@ public class Building_Manager : MonoBehaviour
         if (building != null)
         {
             selected_Building = building;
-            building_Description.Set_Text(building.Description);
+
+            Production_Data production = building.Data.Production;
+            string production_Text = production != null ? production.Production_Compiler() : "";
+            workers_Object.SetActive(production != null && production.Show_Workers);
+
+            production_Text_UI.text = production_Text;
+            building_Description.Set_Description(building.Description);
             building_Manager_Object_UI.SetActive(true);
         }
 

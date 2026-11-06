@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b566956465c984a821687f8115eaa4, type: 3}
+  m_Name: Lumberjacks_Hut_Production
+  m_EditorClassIdentifier: Assembly-CSharp::Production_Data
+  <Workers>k__BackingField: 0
+  <Produce_A>k__BackingField: 2
+  <Produce_A_Amount>k__BackingField: 5
+  <Produce_A_Minutes>k__BackingField: 5
+  <Produce_B>k__BackingField: 0
+  <Produce_B_Amount>k__BackingField: 0
+  <Produce_B_Minutes>k__BackingField: 0
