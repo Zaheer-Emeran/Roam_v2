@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ed2785c14050464e80b754afca9a801, type: 3}
-  m_Name: Pathway_Dirt
+  m_Name: Makeshift_Shelter
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
-  <Description>k__BackingField: Pathway 1
-  <Cost>k__BackingField: 10
-  <Wood>k__BackingField: 5
-  <Rock>k__BackingField: 5
-  <Model>k__BackingField: {fileID: 4460215121729462029, guid: e2f0be46e5912f04ca6a58e5fb8a9260, type: 3}
-  <Place_Instantly>k__BackingField: 1
-  <Drag_Place>k__BackingField: 1
+  <Description>k__BackingField: This is a Crude Housing for residents. Stores up
+    to 3 people
+  <Cost>k__BackingField: 25
+  <Wood>k__BackingField: 10
+  <Rock>k__BackingField: 10
+  <Model>k__BackingField: {fileID: 4460215121729462029, guid: 330fdcf50d9a9224ebb244205afbaa12, type: 3}
+  <Place_Instantly>k__BackingField: 0
+  <Drag_Place>k__BackingField: 0

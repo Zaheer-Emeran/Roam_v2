@@ -64,9 +64,7 @@ public class Building_System : MonoBehaviour
             
             building_Description.Set_Text(
                 "Description: " + data.Description + "\n" +
-                "Talons: " + data.Cost + "\n" +
-                "Logs: " + data.Wood + "\n" +
-                "Rocks: " + data.Rock
+                data.Cost_Compiler()
             );
             description_Object.SetActive(true);
 

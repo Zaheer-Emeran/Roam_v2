@@ -1810,7 +1810,7 @@ MonoBehaviour:
         m_MethodName: Select_Building
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 2a4f5abfc59027641a052a58b5cb3465, type: 2}
           m_ObjectArgumentAssemblyTypeName: Building_Data, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2020,10 +2020,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 60346350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 96.633514, y: 101.986725}
-  m_SizeDelta: {x: 173.3519, y: 182.4978}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -97, y: -119}
+  m_SizeDelta: {x: 173.35193, y: 182.4978}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183917953
 MonoBehaviour:
@@ -2357,7 +2357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &230742037
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2890,10 +2890,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 60346350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 88.575, y: 101.92717}
-  m_SizeDelta: {x: 141.01, y: 171.3519}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -105.0585, y: -119.05959}
+  m_SizeDelta: {x: 141.01001, y: 171.35193}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &259557226
 MonoBehaviour:
@@ -4880,7 +4880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &516151206
 Transform:
   m_ObjectHideFlags: 0
@@ -14809,7 +14809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1753706110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15012,7 +15012,7 @@ MonoBehaviour:
         m_MethodName: Select_Building
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 615605a93eb3530488b8bfeba270b0c2, type: 2}
           m_ObjectArgumentAssemblyTypeName: Building_Data, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -17503,7 +17503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2002426912
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17940,6 +17940,7 @@ MonoBehaviour:
   Crafting_Sub_Menu: {fileID: 2058291688}
   Storage_Sub_Menu: {fileID: 2066094692}
   Misc_Sub_Menu: {fileID: 399903988}
+  Building_Grid: {fileID: 516151205}
 --- !u!1 &2055818674
 GameObject:
   m_ObjectHideFlags: 0
