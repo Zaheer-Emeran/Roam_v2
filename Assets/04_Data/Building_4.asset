@@ -16,6 +16,12 @@ MonoBehaviour:
   <Cost>k__BackingField: 45
   <Wood>k__BackingField: 30
   <Rock>k__BackingField: 30
-  <Model>k__BackingField: {fileID: 4460215121729462029, guid: 85889224e3f487543ab38bd3703fcd16, type: 3}
+  <Base_Workers>k__BackingField: 0
+  <Fire_Workers>k__BackingField: 0
+  <Water_Workers>k__BackingField: 0
+  <Earth_Workers>k__BackingField: 0
+  <Air_Workers>k__BackingField: 0
+  <Avatar_Workers>k__BackingField: 0
+  <Model>k__BackingField: {fileID: 4460215121729462029, guid: 4c5daf92cffa55042922a4a870683da7, type: 3}
   <Place_Instantly>k__BackingField: 0
   <Drag_Place>k__BackingField: 0

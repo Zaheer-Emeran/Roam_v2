@@ -13,6 +13,19 @@ public class Building_Manager : MonoBehaviour
 
     private void Update()
     {
+        // STOP: right click or Esc
+        if (remove_Mode && (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape)))
+        {
+            remove_Mode = false;
+            return;
+        }
+
+        // STOP: another button was clicked (the building buttons create a preview)
+        if (remove_Mode && FindFirstObjectByType<Building_Preview>() != null)
+        {
+            remove_Mode = false;
+        }
+
         if (!Input.GetMouseButtonDown(0)) return;
 
         // Skip the click if a preview exists (you're placing, not selecting)
@@ -23,18 +36,54 @@ public class Building_Manager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.CompareTag("Pathway")) return;
-            Building building = hit.collider.GetComponentInParent<Building>();
-            if (building != null)
+            if (hit.collider.CompareTag("Pathway"))
+        {
+            // REMOVE: in remove mode, a clicked pathway is deleted
+            if (remove_Mode)
             {
-                selected_Building = building;
-                building_Description.Set_Text(building.Description);
-                building_Manager_Object_UI.SetActive(true);
+                Building pathway = hit.collider.GetComponentInParent<Building>();
+                if (pathway != null)
+                {
+                    grid.Remove_Building(pathway);
+                    Destroy(pathway.gameObject);
+                }
+                // remove_Mode = false;
             }
+            return;
+        }
+        remove_Mode = false;
+        // REMOVE: while in remove mode, clicking anything else does nothing
+        Building building = hit.collider.GetComponentInParent<Building>();
+        if (building != null)
+        {
+            selected_Building = building;
+            building_Description.Set_Text(building.Description);
+            building_Manager_Object_UI.SetActive(true);
         }
 
-        
+        }
     }
+
+     // REMOVE: true after the remove-pathway button is clicked
+        private bool remove_Mode;
+
+        // REMOVE: hook this up to the new button's On Click
+        public void Start_Remove_Mode()
+        {
+            // STOP: clicking the button again turns remove mode off
+            if (remove_Mode)
+            {
+                remove_Mode = false;
+                return;
+            }
+
+            // cancel any building preview so it doesn't get in the way
+            Building_Preview preview = FindFirstObjectByType<Building_Preview>();
+            if (preview != null) Destroy(preview.gameObject);
+
+            building_Manager_Object_UI.SetActive(false);
+            remove_Mode = true;
+        }
 
     public void Delete_Selected()
     {
@@ -52,4 +101,6 @@ public class Building_Manager : MonoBehaviour
         selected_Building = null;
         building_Manager_Object_UI.SetActive(false);
     }
+
+    //when the button is clicked again, when right click is clicked, when esc is clicked, when a building is clicked, when a other button is clicked, stop the pathway removing
 }
