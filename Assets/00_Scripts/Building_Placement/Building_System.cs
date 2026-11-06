@@ -63,7 +63,8 @@ public class Building_System : MonoBehaviour
             }
             
             building_Description.Set_Text(
-                "Description: " + data.Description + "\n" +
+                "Description: " + data.Description + "\n\n" +
+                "Cost: " +  "\n" +
                 data.Cost_Compiler()
             );
             description_Object.SetActive(true);

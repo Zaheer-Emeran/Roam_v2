@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed2785c14050464e80b754afca9a801, type: 3}
   m_Name: Makeshift_Shelter
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
-  <Description>k__BackingField: This is a Crude Housing for residents. Stores up
-    to 3 people
+  <Description>k__BackingField: This is a Crude Housing for up to 3 residents.
   <Cost>k__BackingField: 25
   <Wood>k__BackingField: 10
   <Rock>k__BackingField: 10
