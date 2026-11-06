@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed2785c14050464e80b754afca9a801, type: 3}
+  m_Name: Raw_Materials_Storage
+  m_EditorClassIdentifier: Assembly-CSharp::Building_Data
+  <Description>k__BackingField: 'Raw Material Storage: Stores Resources such as Stone,
+    Wood, Ore, etc.'
+  <Cost>k__BackingField: 25
+  <Wood>k__BackingField: 10
+  <Rock>k__BackingField: 10
+  <Model>k__BackingField: {fileID: 4460215121729462029, guid: be2e7384e68d6e244b1056b065faec58, type: 3}
+  <Place_Instantly>k__BackingField: 0
+  <Drag_Place>k__BackingField: 0
