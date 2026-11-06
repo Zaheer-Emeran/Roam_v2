@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed2785c14050464e80b754afca9a801, type: 3}
   m_Name: Townhall
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
-  <Description>k__BackingField: Pathway 1
+  <Description>k__BackingField: This is the main Town Hall, which is the centre of
+    the Village
   <Cost>k__BackingField: 35
   <Wood>k__BackingField: 55
   <Rock>k__BackingField: 85
