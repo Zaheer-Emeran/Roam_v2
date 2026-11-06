@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 [DefaultExecutionOrder(-10)]
 public class Building_Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject description_Object_UI;
+    [SerializeField] private GameObject building_Manager_Object_UI;
     [SerializeField] private Building_Description building_Description;
 
     private void Update()
@@ -23,7 +23,7 @@ public class Building_Manager : MonoBehaviour
             if (building != null)
             {
                 building_Description.Set_Text(building.Description);
-                description_Object_UI.SetActive(true);
+                building_Manager_Object_UI.SetActive(true);
             }
         }
     }

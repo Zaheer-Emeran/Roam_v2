@@ -10,6 +10,8 @@ public class Building_Grid : MonoBehaviour
 
     private void Start()
     {
+
+        Draw_Grid();
         grid = new Building_Grid_Cell[width,height];
         for (int x = 0; x < grid.GetLength(0); x++)
         {
@@ -64,6 +66,36 @@ public class Building_Grid : MonoBehaviour
             Vector3 end = origin + new Vector3(x * Building_System.Cell_Size, 0.01f, height * Building_System.Cell_Size);
             Gizmos.DrawLine(start, end);
         }
+    }
+
+    // DRAW: builds the grid out of real lines so it shows in the Game view and in builds
+    private void Draw_Grid()
+    {
+        Material mat = new Material(Shader.Find("Sprites/Default"));
+        mat.color = Color.white;
+
+        float size = Building_System.Cell_Size;
+
+        for (int y = 0; y <= height; y++)
+        {
+            Create_Line(new Vector3(0, 0.01f, y * size), new Vector3(width * size, 0.01f, y * size), mat);
+        }
+        for (int x = 0; x <= width; x++)
+        {
+            Create_Line(new Vector3(x * size, 0.01f, 0), new Vector3(x * size, 0.01f, height * size), mat);
+        }
+    }
+
+    private void Create_Line(Vector3 start, Vector3 end, Material mat)
+    {
+        LineRenderer line = new GameObject("Grid_Line").AddComponent<LineRenderer>();
+        line.transform.SetParent(transform);
+        line.material = mat;
+        line.startWidth = 0.03f;
+        line.endWidth = 0.03f;
+        line.positionCount = 2;
+        line.SetPosition(0, transform.position + start);
+        line.SetPosition(1, transform.position + end);
     }
 }
 

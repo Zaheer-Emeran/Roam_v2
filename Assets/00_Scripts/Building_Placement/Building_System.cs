@@ -18,6 +18,8 @@ public class Building_System : MonoBehaviour
 
 
         [SerializeField] private GameObject description_Object;
+        [SerializeField] private GameObject building_Manager_Object;
+
         [SerializeField] private Building_Description building_Description;
         
 
@@ -179,5 +181,6 @@ private void Handle_Preview(Vector3 mouse_World_Position)
 
         public void Hide_UI(){
             description_Object.SetActive(false);
+            building_Manager_Object.SetActive(false);
         }
 }
