@@ -13,10 +13,10 @@ public partial class Pick_Random_Point_Action : Action
     {
         // 1. choose a random building that has Can_Passive_Wander ticked
         Building_Grid grid = Object.FindFirstObjectByType<Building_Grid>();
-        if (grid == null) { Debug.Log("No grid found"); return Status.Failure; }
+        if (grid == null) {  return Status.Failure; }
 
         List<Building> buildings = grid.Get_Wander_Buildings();
-        if (buildings.Count == 0) { Debug.Log("No wander buildings"); return Status.Failure; }
+        if (buildings.Count == 0) {  return Status.Failure; }
 
         Building chosen = buildings[Random.Range(0, buildings.Count)];
 

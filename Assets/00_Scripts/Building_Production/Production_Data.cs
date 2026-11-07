@@ -14,7 +14,7 @@ public enum Resource_Type
 [CreateAssetMenu(menuName = "Data/Production")]
 public class Production_Data : ScriptableObject
 {
-    [field: SerializeField] public int Workers { get; private set; }
+    [field: SerializeField] public int Max_Workers { get; private set; }
     [field: SerializeField] public bool Show_Workers { get; private set; }
 
     [field: SerializeField] public Resource_Type Produce_A { get; private set; }

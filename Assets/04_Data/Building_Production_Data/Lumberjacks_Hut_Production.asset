@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b566956465c984a821687f8115eaa4, type: 3}
   m_Name: Lumberjacks_Hut_Production
   m_EditorClassIdentifier: Assembly-CSharp::Production_Data
-  <Workers>k__BackingField: 0
+  <Max_Workers>k__BackingField: 2
   <Show_Workers>k__BackingField: 1
   <Produce_A>k__BackingField: 2
   <Produce_A_Amount>k__BackingField: 5

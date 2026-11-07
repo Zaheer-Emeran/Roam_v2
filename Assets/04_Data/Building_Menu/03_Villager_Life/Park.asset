@@ -16,7 +16,7 @@ MonoBehaviour:
   <Cost>k__BackingField: 25
   <Wood>k__BackingField: 10
   <Rock>k__BackingField: 10
-  <Model>k__BackingField: {fileID: 4460215121729462029, guid: 330fdcf50d9a9224ebb244205afbaa12, type: 3}
+  <Model>k__BackingField: {fileID: 4460215121729462029, guid: 6fbdc66cc8d9b564280fdebc785aaa7f, type: 3}
   <Place_Instantly>k__BackingField: 0
   <Drag_Place>k__BackingField: 0
   <Can_Passive_Wander>k__BackingField: 1

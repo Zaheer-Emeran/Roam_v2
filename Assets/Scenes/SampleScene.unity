@@ -5339,7 +5339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &516151206
 Transform:
   m_ObjectHideFlags: 0
@@ -5926,7 +5926,7 @@ MonoBehaviour:
         m_MethodName: Select_Building
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 36f6ded03313f8d44a106a3e146cd83a, type: 2}
           m_ObjectArgumentAssemblyTypeName: Building_Data, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -11599,6 +11599,7 @@ MonoBehaviour:
   grid: {fileID: 516151207}
   city_resources: {fileID: 962148488}
   workers_Object: {fileID: 205086380}
+  number_Of_Workers: {fileID: 74044371}
 --- !u!1 &1152396808
 GameObject:
   m_ObjectHideFlags: 0
@@ -13329,7 +13330,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1281626736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1091049996}
+        m_TargetAssemblyTypeName: Building_Manager, Assembly-CSharp
+        m_MethodName: Add_Worker_To_Selected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1281626736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19143,7 +19156,7 @@ MonoBehaviour:
         m_MethodName: Select_Building
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: ee25b972288c6fd45847e280864c414c, type: 2}
           m_ObjectArgumentAssemblyTypeName: Building_Data, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -20516,7 +20529,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2070421508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1091049996}
+        m_TargetAssemblyTypeName: Building_Manager, Assembly-CSharp
+        m_MethodName: Remove_Worker_From_Selected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2070421508
 MonoBehaviour:
   m_ObjectHideFlags: 0

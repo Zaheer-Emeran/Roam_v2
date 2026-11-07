@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
-
-
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.UI;
+using Unity.Behavior;
 [DefaultExecutionOrder(-10)]
 public class Building_Manager : MonoBehaviour
 {
@@ -13,8 +15,11 @@ public class Building_Manager : MonoBehaviour
     [SerializeField] private Building_Grid grid;
     [SerializeField] private City_Resources city_resources;
     [SerializeField] private GameObject workers_Object;
+    [SerializeField] private TMP_Text number_Of_Workers;
+
 
     private Building selected_Building;
+    // private int temp_Workers;
 
     private void Update()
     {
@@ -70,6 +75,8 @@ public class Building_Manager : MonoBehaviour
             production_Text_UI.text = production_Text;
             building_Description.Set_Description(building.Description);
             building_Manager_Object_UI.SetActive(true);
+            Update_Workers_Text();
+
         }
 
         }
@@ -102,6 +109,16 @@ public class Building_Manager : MonoBehaviour
         Debug.Log("blep");
         if (selected_Building == null) return;
 
+        // WORKERS: free every villager working in this building
+        foreach (GameObject worker in selected_Building.Workers)
+        {
+            if (worker != null)
+            {
+                Set_Working(worker.GetComponent<Villager_Data>(), false, null);
+                // worker.GetComponent<Villager_Data>().Is_Working = false;
+            }
+        }
+
         Building_Data data = selected_Building.Data;
         city_resources.Change_Talons(data.Cost);
         city_resources.Change_Wood(data.Wood);
@@ -113,5 +130,63 @@ public class Building_Manager : MonoBehaviour
         building_Manager_Object_UI.SetActive(false);
     }
 
-    //when the button is clicked again, when right click is clicked, when esc is clicked, when a building is clicked, when a other button is clicked, stop the pathway removing
+    //Add / Remove worker logic
+    // WORKERS: every villager in the scene that isn't working yet
+    public List<Villager_Data> Get_Idle_Villagers()
+    {
+        return FindObjectsByType<Villager_Data>(FindObjectsSortMode.None)
+            .Where(v => !v.Is_Working)
+            .ToList();
+    }
+
+    // MORE button
+
+    public void Add_Worker_To_Selected()
+    {
+        if (selected_Building == null) return;
+        Production_Data production = selected_Building.Data.Production;
+        if (production == null) return;
+        if (selected_Building.Workers.Count >= production.Max_Workers) return;
+
+        List<Villager_Data> idle = Get_Idle_Villagers();
+        if (idle.Count == 0) return;
+        
+        Set_Working(idle[0], true, selected_Building.gameObject);
+        selected_Building.Workers.Add(idle[0].gameObject);
+        Update_Workers_Text();
+
+        // temp_Workers++;
+
+
+    }
+
+    // LESS button
+    // LESS button
+    public void Remove_Worker_From_Selected()
+    {
+        if (selected_Building == null || selected_Building.Workers.Count == 0) return;
+
+        int last = selected_Building.Workers.Count - 1;
+        Set_Working(selected_Building.Workers[last].GetComponent<Villager_Data>(), false, null);
+        // selected_Building.Workers[last].GetComponent<Villager_Data>().Is_Working = false;
+        selected_Building.Workers.RemoveAt(last);
+        Update_Workers_Text();
+    }
+    private void Update_Workers_Text()
+    {
+        number_Of_Workers.text = selected_Building.Workers.Count.ToString();
+    }
+
+
+
+    // WORKERS: copy the working state into the villager's blackboard
+    private void Set_Working(Villager_Data villager, bool working, GameObject station)
+    {
+        villager.Is_Working = working;
+
+        BehaviorGraphAgent agent = villager.GetComponent<BehaviorGraphAgent>();
+        agent.SetVariableValue("is_Working", working);
+        agent.SetVariableValue("Working_Station", station);
+    }
+
 }
