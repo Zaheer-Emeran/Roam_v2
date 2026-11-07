@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Miners_Hut_Production
   m_EditorClassIdentifier: Assembly-CSharp::Production_Data
   <Workers>k__BackingField: 0
+  <Show_Workers>k__BackingField: 1
   <Produce_A>k__BackingField: 3
   <Produce_A_Amount>k__BackingField: 5
   <Produce_A_Minutes>k__BackingField: 5

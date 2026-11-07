@@ -108,6 +108,25 @@ public class Building_Grid : MonoBehaviour
         line.SetPosition(0, transform.position + start);
         line.SetPosition(1, transform.position + end);
     }
+
+    public List<Building> Get_Wander_Buildings()
+    {
+        List<Building> result = new List<Building>();
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Building b = grid[x, y].Get_Building();
+                if (b != null && b.Data.Can_Passive_Wander && !result.Contains(b))
+                {
+                    result.Add(b);
+                }
+            }
+        }
+
+        return result;
+    }
 }
 
 public class Building_Grid_Cell
@@ -126,5 +145,10 @@ public class Building_Grid_Cell
     public void Clear_If(Building b)
     {
         if (building == b) building = null;
+    }
+
+    public Building Get_Building()
+    {
+        return building;
     }
 }
