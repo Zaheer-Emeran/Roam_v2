@@ -44,7 +44,7 @@ public class Building_Menu : MonoBehaviour
     public void Show_Menu()
     {
         Build_Menu_UI.SetActive(true);
-        Building_Grid.SetActive(true);
+        // Building_Grid.SetActive(true);
     }
 
     public void Hide_Menu()
@@ -57,7 +57,7 @@ public class Building_Menu : MonoBehaviour
         Crafting_Sub_Menu.SetActive(false);
         Storage_Sub_Menu.SetActive(false);
         Misc_Sub_Menu.SetActive(false);
-        Building_Grid.SetActive(false);
+        // Building_Grid.SetActive(false);
 
     }
 }

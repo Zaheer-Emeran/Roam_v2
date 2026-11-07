@@ -7,6 +7,19 @@ public class Building_Grid : MonoBehaviour
     [SerializeField] private int width;
     [SerializeField] private int height;
     private Building_Grid_Cell[,] grid;
+    private Material grid_Material;
+    private bool grid_Visible = true;
+
+
+    private void Update()
+    {
+        // TAB: toggle the grid between white and transparent
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            grid_Visible = !grid_Visible;
+            grid_Material.color = grid_Visible ? Color.white : Color.clear;
+        }
+    }
 
     private void Start()
     {
@@ -83,7 +96,9 @@ public class Building_Grid : MonoBehaviour
     private void Draw_Grid()
     {
         Material mat = new Material(Shader.Find("Sprites/Default"));
-        mat.color = Color.white;
+        mat.color = Color.clear;      // start transparent
+        grid_Material = mat;
+        grid_Visible = false;         // so the first Tab turns it on
 
         float size = Building_System.Cell_Size;
 
@@ -95,6 +110,9 @@ public class Building_Grid : MonoBehaviour
         {
             Create_Line(new Vector3(x * size, 0.01f, 0), new Vector3(x * size, 0.01f, height * size), mat);
         }
+
+        // Material mat = new Material(Shader.Find("Sprites/Default"));
+        // mat.color = Color.white;
     }
 
     private void Create_Line(Vector3 start, Vector3 end, Material mat)

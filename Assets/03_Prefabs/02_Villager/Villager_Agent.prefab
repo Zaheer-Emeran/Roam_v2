@@ -153,8 +153,6 @@ MonoBehaviour:
   m_Graph: {fileID: -44177876675961255, guid: 47ce21aa132031a45a1a0e58540a17ac, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 6871891764167049540
-  - rid: 6871891764167049541
-  - rid: 6871891764167049653
   m_OriginalGraph: {fileID: -44177876675961255, guid: 47ce21aa132031a45a1a0e58540a17ac, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -169,19 +167,3 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 6119560630082071417}
-    - rid: 6871891764167049541
-      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 5333989158208010785
-          m_Value1: 2360051025154260972
-        Name: Target
-        m_Value: {fileID: 0}
-    - rid: 6871891764167049653
-      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 3464499439274113974
-          m_Value1: 18005408312156707359
-        Name: Wander_Point
-        m_Value: {fileID: 0}
