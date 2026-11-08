@@ -111,13 +111,19 @@ public class Building_Manager : MonoBehaviour
         Debug.Log("blep");
         if (selected_Building == null) return;
 
+        if (selected_Building.Work_Point != null)
+        {
+            grid.Remove_Building(selected_Building.Work_Point);
+            Destroy(selected_Building.Work_Point.gameObject);
+        }
+
+        // WORKERS: free every villager working in this building
         // WORKERS: free every villager working in this building
         foreach (GameObject worker in selected_Building.Workers)
         {
             if (worker != null)
             {
-                Set_Working(worker.GetComponent<Villager_Data>(), false, null);
-                // worker.GetComponent<Villager_Data>().Is_Working = false;
+                Set_Working(worker.GetComponent<Villager_Data>(), false, null, null);
             }
         }
 
@@ -153,7 +159,8 @@ public class Building_Manager : MonoBehaviour
         List<Villager_Data> idle = Get_Idle_Villagers();
         if (idle.Count == 0) return;
         
-        Set_Working(idle[0], true, selected_Building.gameObject);
+        GameObject point = selected_Building.Work_Point != null ? selected_Building.Work_Point.gameObject : null;
+        Set_Working(idle[0], true, selected_Building.gameObject, point);
         selected_Building.Workers.Add(idle[0].gameObject);
         Update_Workers_Text();
 
@@ -169,7 +176,7 @@ public class Building_Manager : MonoBehaviour
         if (selected_Building == null || selected_Building.Workers.Count == 0) return;
 
         int last = selected_Building.Workers.Count - 1;
-        Set_Working(selected_Building.Workers[last].GetComponent<Villager_Data>(), false, null);
+        Set_Working(selected_Building.Workers[last].GetComponent<Villager_Data>(), false, null, null);
         // selected_Building.Workers[last].GetComponent<Villager_Data>().Is_Working = false;
         selected_Building.Workers.RemoveAt(last);
         Update_Workers_Text();
@@ -182,13 +189,14 @@ public class Building_Manager : MonoBehaviour
 
 
     // WORKERS: copy the working state into the villager's blackboard. Figure this out further plez
-    private void Set_Working(Villager_Data villager, bool working, GameObject station)
+    private void Set_Working(Villager_Data villager, bool working, GameObject station,GameObject workpoint)
     {
         villager.Is_Working = working;
 
         BehaviorGraphAgent agent = villager.GetComponent<BehaviorGraphAgent>();
         agent.SetVariableValue("is_Working", working);
         agent.SetVariableValue("Working_Station", station);
+        agent.SetVariableValue("Workpoint", workpoint);
     }
 
     // WORKPOINT button

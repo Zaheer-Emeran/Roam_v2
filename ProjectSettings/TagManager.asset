@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Building
   - Pathway
+  - Rock
   layers:
   - Default
   - TransparentFX

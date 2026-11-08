@@ -17,6 +17,7 @@ MonoBehaviour:
   <Produce_A>k__BackingField: 3
   <Produce_A_Amount>k__BackingField: 5
   <Produce_A_Minutes>k__BackingField: 5
-  <Produce_B>k__BackingField: 5
-  <Produce_B_Amount>k__BackingField: 1
-  <Produce_B_Minutes>k__BackingField: 10
+  <Produce_B>k__BackingField: 0
+  <Produce_B_Amount>k__BackingField: 0
+  <Produce_B_Minutes>k__BackingField: 0
+  work_Point: {fileID: 0}

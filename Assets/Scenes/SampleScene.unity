@@ -2271,10 +2271,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 60346350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80.82663, y: -180.53773}
-  m_SizeDelta: {x: 141.0052, y: 305.5733}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 80, y: 0}
+  m_SizeDelta: {x: 141.00519, y: 305.5733}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183917953
 MonoBehaviour:
@@ -3316,10 +3316,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 60346350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80.27994, y: -181.38626}
-  m_SizeDelta: {x: 130.6074, y: 292.8495}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 80.54663, y: -0.84851074}
+  m_SizeDelta: {x: 130.60742, y: 292.8495}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &259557226
 MonoBehaviour:
@@ -9595,7 +9595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &880417916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12010,6 +12010,8 @@ MonoBehaviour:
   city_resources: {fileID: 962148488}
   workers_Object: {fileID: 205086380}
   number_Of_Workers: {fileID: 74044371}
+  building_System: {fileID: 892734383}
+  workpoint_Data: {fileID: 11400000, guid: 888c874e46ff8bf4582142f87e8b2a2d, type: 2}
 --- !u!1 &1152396808
 GameObject:
   m_ObjectHideFlags: 0
@@ -21207,13 +21209,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 892734383}
-        m_TargetAssemblyTypeName: Building_System, Assembly-CSharp
-        m_MethodName: Select_Building
-        m_Mode: 2
+      - m_Target: {fileID: 1091049996}
+        m_TargetAssemblyTypeName: Building_Manager, Assembly-CSharp
+        m_MethodName: Place_Workpoint
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 888c874e46ff8bf4582142f87e8b2a2d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Building_Data, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

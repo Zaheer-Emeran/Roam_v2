@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Unity.Behavior;
 
 public class Building_System : MonoBehaviour
 {
@@ -150,6 +151,11 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         if (work_Point_Owner != null)
         {
             work_Point_Owner.Work_Point = building;
+            // give the workpoint to villagers who were assigned before it existed
+            foreach (GameObject worker in work_Point_Owner.Workers)
+            {
+                worker.GetComponent<BehaviorGraphAgent>().SetVariableValue("Workpoint", building.gameObject);
+            }
             work_Point_Owner = null;
         }
         
