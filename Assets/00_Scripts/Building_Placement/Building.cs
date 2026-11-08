@@ -17,6 +17,10 @@ public class Building : MonoBehaviour
     private Material[][] original_Materials;
     public Building_Data Data => data;
 
+    // WORKPOINT: the one workpoint placed for this building
+    public Building Work_Point;
+
+    
     public void Setup(Building_Data data, float rotation)
     {
         this.data = data;

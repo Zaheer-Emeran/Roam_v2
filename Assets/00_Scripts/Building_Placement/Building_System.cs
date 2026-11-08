@@ -23,6 +23,9 @@ public class Building_System : MonoBehaviour
         [SerializeField] private Building_Description building_Description;
         
 
+        //Workpoint
+        private Building work_Point_Owner;
+
         private Building_Preview preview;
 
         private void Update()
@@ -56,6 +59,7 @@ public class Building_System : MonoBehaviour
         public void Select_Building(Building_Data data)
         {
             // Cancel the current preview first, same as right click / Esc
+            work_Point_Owner = null;
             if (preview != null)
             {
                 Destroy(preview.gameObject);
@@ -70,6 +74,13 @@ public class Building_System : MonoBehaviour
             description_Object.SetActive(true);
 
             preview = CreatePreview(data, GetMouseWorldPosition());
+        }
+
+        // WORKPOINT: start placing a workpoint for a specific building
+        public void Select_Workpoint(Building_Data data, Building owner)
+        {
+            Select_Building(data);
+            work_Point_Owner = owner;   // set after Select_Building, which clears it
         }
 
 private void Handle_Preview(Vector3 mouse_World_Position)
@@ -131,8 +142,17 @@ private void Handle_Preview(Vector3 mouse_World_Position)
 
     private void Place_Building(List<Vector3> building_Positions)
     {
+        
+
         Building building = Instantiate(building_Prefab,preview.transform.position,Quaternion.identity);
         // Debug.Log(preview.Data.name + " | Cost: " + preview.Data.Cost + " | " + preview.Data.Description + " | Wood: " + preview.Data.Wood + " | Wood: " + preview.Data.Rock);
+        // WORKPOINT: link the new workpoint to the building it was placed for
+        if (work_Point_Owner != null)
+        {
+            work_Point_Owner.Work_Point = building;
+            work_Point_Owner = null;
+        }
+        
         city_resources.Change_Talons(-preview.Data.Cost);
         city_resources.Change_Wood(-preview.Data.Wood);
         city_resources.Change_Rock(-preview.Data.Rock);

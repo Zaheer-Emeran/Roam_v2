@@ -17,6 +17,8 @@ public class Building_Manager : MonoBehaviour
     [SerializeField] private GameObject workers_Object;
     [SerializeField] private TMP_Text number_Of_Workers;
 
+    [SerializeField] private Building_System building_System;
+    [SerializeField] private Building_Data workpoint_Data;
 
     private Building selected_Building;
     // private int temp_Workers;
@@ -179,7 +181,7 @@ public class Building_Manager : MonoBehaviour
 
 
 
-    // WORKERS: copy the working state into the villager's blackboard
+    // WORKERS: copy the working state into the villager's blackboard. Figure this out further plez
     private void Set_Working(Villager_Data villager, bool working, GameObject station)
     {
         villager.Is_Working = working;
@@ -187,6 +189,17 @@ public class Building_Manager : MonoBehaviour
         BehaviorGraphAgent agent = villager.GetComponent<BehaviorGraphAgent>();
         agent.SetVariableValue("is_Working", working);
         agent.SetVariableValue("Working_Station", station);
+    }
+
+    // WORKPOINT button
+    public void Place_Workpoint()
+    {
+        if (selected_Building == null) return;
+        if (selected_Building.Data.Production == null) return;   // only production buildings
+        if (selected_Building.Work_Point != null) return;        // already has one
+
+        building_System.Select_Workpoint(workpoint_Data, selected_Building);
+        building_Manager_Object_UI.SetActive(false);
     }
 
 }

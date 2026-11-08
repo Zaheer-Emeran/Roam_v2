@@ -25,6 +25,8 @@ public class Production_Data : ScriptableObject
     [field: SerializeField] public int Produce_B_Amount { get; private set; }
     [field: SerializeField] public float Produce_B_Minutes { get; private set; }
 
+    [SerializeField] private GameObject work_Point;
+
     public string Production_Compiler()
     {
         string result = "";
