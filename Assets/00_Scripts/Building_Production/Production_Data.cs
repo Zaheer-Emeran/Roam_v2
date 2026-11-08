@@ -38,4 +38,20 @@ public class Production_Data : ScriptableObject
 
         return result;
     }
+
+    // STORAGE: which storage tag a resource type is delivered to
+    public string Resource_Storage_Searcher(Resource_Type type)
+    {
+        switch (type)
+        {
+            case Resource_Type.Wood:
+            case Resource_Type.Rock:
+            case Resource_Type.Stone:
+            case Resource_Type.Iron_Ore:
+            case Resource_Type.Coal:
+                return "Raw_Material_Storage";
+            default:
+                return "";   // no storage for this type yet
+        }
+    }
 }

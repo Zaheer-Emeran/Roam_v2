@@ -123,7 +123,7 @@ public class Building_Manager : MonoBehaviour
         {
             if (worker != null)
             {
-                Set_Working(worker.GetComponent<Villager_Data>(), false, null, null);
+                Set_Working(worker.GetComponent<Villager_Data>(), false, null, null, null);
             }
         }
 
@@ -160,7 +160,7 @@ public class Building_Manager : MonoBehaviour
         if (idle.Count == 0) return;
         
         GameObject point = selected_Building.Work_Point != null ? selected_Building.Work_Point.gameObject : null;
-        Set_Working(idle[0], true, selected_Building.gameObject, point);
+        Set_Working(idle[0], true, selected_Building.gameObject, point, Find_Storage(production));
         selected_Building.Workers.Add(idle[0].gameObject);
         Update_Workers_Text();
 
@@ -176,7 +176,7 @@ public class Building_Manager : MonoBehaviour
         if (selected_Building == null || selected_Building.Workers.Count == 0) return;
 
         int last = selected_Building.Workers.Count - 1;
-        Set_Working(selected_Building.Workers[last].GetComponent<Villager_Data>(), false, null, null);
+        Set_Working(selected_Building.Workers[last].GetComponent<Villager_Data>(), false, null, null, null);
         // selected_Building.Workers[last].GetComponent<Villager_Data>().Is_Working = false;
         selected_Building.Workers.RemoveAt(last);
         Update_Workers_Text();
@@ -189,7 +189,7 @@ public class Building_Manager : MonoBehaviour
 
 
     // WORKERS: copy the working state into the villager's blackboard. Figure this out further plez
-    private void Set_Working(Villager_Data villager, bool working, GameObject station,GameObject workpoint)
+    private void Set_Working(Villager_Data villager, bool working, GameObject station, GameObject workpoint, GameObject storage)
     {
         villager.Is_Working = working;
 
@@ -197,7 +197,20 @@ public class Building_Manager : MonoBehaviour
         agent.SetVariableValue("is_Working", working);
         agent.SetVariableValue("Working_Station", station);
         agent.SetVariableValue("Workpoint", workpoint);
+        agent.SetVariableValue("Resource_Storage", storage);
+
+         // UNASSIGNED: stop everything and start over on the wander side
+    if (!working)
+    {
+        agent.Restart();
+
+        // stop the current walk right away
+        UnityEngine.AI.NavMeshAgent nav = villager.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (nav != null) nav.ResetPath();
     }
+    }
+
+    
 
     // WORKPOINT button
     public void Place_Workpoint()
@@ -208,6 +221,16 @@ public class Building_Manager : MonoBehaviour
 
         building_System.Select_Workpoint(workpoint_Data, selected_Building);
         building_Manager_Object_UI.SetActive(false);
+    }
+
+    // STORAGE: find the storage object for what this building produces
+    private GameObject Find_Storage(Production_Data production)
+    {
+        string tag = production.Resource_Storage_Searcher(production.Produce_A);
+        if (tag == "") return null;
+
+        GameObject[] storages = GameObject.FindGameObjectsWithTag(tag);
+        return storages.Length > 0 ? storages[0] : null;
     }
 
 }

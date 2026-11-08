@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 3703325351719694898}
   m_Layer: 0
   m_Name: Raw_Materials_Storage
-  m_TagString: Building
+  m_TagString: Raw_Material_Storage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
