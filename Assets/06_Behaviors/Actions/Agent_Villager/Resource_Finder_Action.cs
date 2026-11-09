@@ -26,7 +26,7 @@ protected override Status OnStart()
     Vector3 center = Workpoint.Value.transform.position;
     float best = Radius.Value;
     bool found = false;
-
+    Debug.Log("Workpoint: " + Workpoint.Value + " | Station: " + Working_Station.Value);
     foreach (Resource_Type type in new[] { production.Produce_A, production.Produce_B })
     {
         if (type == Resource_Type.None) continue;
@@ -34,6 +34,7 @@ protected override Status OnStart()
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag(type.ToString()))
         {
             float distance = Vector3.Distance(center, obj.transform.position);
+            Debug.Log("Found " + obj.name + " at distance " + distance + " (radius " + Radius.Value + ")");
             if (distance <= best)
             {
                 best = distance;
