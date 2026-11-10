@@ -198,6 +198,7 @@ public class Building_Manager : MonoBehaviour
         agent.SetVariableValue("Working_Station", station);
         agent.SetVariableValue("Workpoint", workpoint);
         agent.SetVariableValue("Resource_Storage", storage);
+        // agent.SetVariableValue("City_Resources", city_resources);
 
          // UNASSIGNED: stop everything and start over on the wander side
     if (!working)

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Graph: {fileID: -44177876675961255, guid: 47ce21aa132031a45a1a0e58540a17ac, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 6871891764167049540
+  - rid: 6871891830887678866
   m_OriginalGraph: {fileID: -44177876675961255, guid: 47ce21aa132031a45a1a0e58540a17ac, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -168,6 +169,14 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 6119560630082071417}
+    - rid: 6871891830887678866
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4071276941448134846
+          m_Value1: 15105955886614300733
+        Name: City_Resources
+        m_Value: {fileID: 0}
 --- !u!114 &8437839319175641856
 MonoBehaviour:
   m_ObjectHideFlags: 0
