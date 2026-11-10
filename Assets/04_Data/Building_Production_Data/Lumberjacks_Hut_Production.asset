@@ -20,3 +20,4 @@ MonoBehaviour:
   <Produce_B>k__BackingField: 0
   <Produce_B_Amount>k__BackingField: 0
   <Produce_B_Minutes>k__BackingField: 0
+  work_Point: {fileID: 0}

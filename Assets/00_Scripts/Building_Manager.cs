@@ -143,7 +143,7 @@ public class Building_Manager : MonoBehaviour
     public List<Villager_Data> Get_Idle_Villagers()
     {
         return FindObjectsByType<Villager_Data>(FindObjectsSortMode.None)
-            .Where(v => !v.Is_Working)
+            .Where(v => !v.Is_Working && !v.Is_Defending)
             .ToList();
     }
 
@@ -191,24 +191,40 @@ public class Building_Manager : MonoBehaviour
     // WORKERS: copy the working state into the villager's blackboard. Figure this out further plez
     private void Set_Working(Villager_Data villager, bool working, GameObject station, GameObject workpoint, GameObject storage)
     {
+        bool defending = false;
+        if (working && station != null)
+        {
+            Building building = station.GetComponent<Building>();
+            if (building != null && building.Data.is_Defence_Building)
+            {
+                defending = true;
+                working = false;   // is_Working stays false
+            }
+        }
+
         villager.Is_Working = working;
+        villager.Is_Defending = defending;
 
         BehaviorGraphAgent agent = villager.GetComponent<BehaviorGraphAgent>();
+
+        if (!working)
+            {
+                agent.Restart();
+
+                // stop the current walk right away
+                UnityEngine.AI.NavMeshAgent nav = villager.GetComponent<UnityEngine.AI.NavMeshAgent>();
+                if (nav != null) nav.ResetPath();
+            }
+
         agent.SetVariableValue("is_Working", working);
+        agent.SetVariableValue("is_Defending", defending);
         agent.SetVariableValue("Working_Station", station);
         agent.SetVariableValue("Workpoint", workpoint);
         agent.SetVariableValue("Resource_Storage", storage);
         // agent.SetVariableValue("City_Resources", city_resources);
 
          // UNASSIGNED: stop everything and start over on the wander side
-    if (!working)
-    {
-        agent.Restart();
-
-        // stop the current walk right away
-        UnityEngine.AI.NavMeshAgent nav = villager.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        if (nav != null) nav.ResetPath();
-    }
+    
     }
 
     

@@ -10,6 +10,7 @@ public class Building_Menu : MonoBehaviour
     [SerializeField] private GameObject Crafting_Sub_Menu;
     [SerializeField] private GameObject Storage_Sub_Menu;
     [SerializeField] private GameObject Misc_Sub_Menu;
+    [SerializeField] private GameObject Defence_Sub_Menu;
 
     [SerializeField] private GameObject Building_Grid;
 
@@ -34,6 +35,7 @@ public class Building_Menu : MonoBehaviour
     Gathering_Sub_Menu.SetActive(false);
     Crafting_Sub_Menu.SetActive(false);
     Storage_Sub_Menu.SetActive(false);
+    Defence_Sub_Menu.SetActive(false);
     Misc_Sub_Menu.SetActive(false);
 
     // Then show the one that was dragged into the button
@@ -57,6 +59,8 @@ public class Building_Menu : MonoBehaviour
         Crafting_Sub_Menu.SetActive(false);
         Storage_Sub_Menu.SetActive(false);
         Misc_Sub_Menu.SetActive(false);
+        Defence_Sub_Menu.SetActive(false);
+
         // Building_Grid.SetActive(false);
 
     }

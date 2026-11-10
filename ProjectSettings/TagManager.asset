@@ -9,6 +9,7 @@ TagManager:
   - Rock
   - Raw_Material_Storage
   - Wood
+  - Zombie
   layers:
   - Default
   - TransparentFX
