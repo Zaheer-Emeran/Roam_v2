@@ -28,4 +28,14 @@ public class City_Resources : MonoBehaviour
     {
         Rock += amount;
     }
+
+    public void Add_Resource(Resource_Type type, int amount)
+    {
+        switch (type)
+        {
+            case Resource_Type.Talons: Change_Talons(amount); break;
+            case Resource_Type.Wood: Change_Wood(amount); break;
+            case Resource_Type.Rock: Change_Rock(amount); break;
+        }
+    }
 }

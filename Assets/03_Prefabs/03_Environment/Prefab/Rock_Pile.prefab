@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8171676519010491809}
   - component: {fileID: 1812571877494542572}
   - component: {fileID: 3153909754433198266}
+  - component: {fileID: -5670954413191339872}
   m_Layer: 0
   m_Name: Rock_Pile
   m_TagString: Rock
@@ -64,6 +65,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5670954413191339872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274120129746590246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d681d55d2aeb34b9e17af14e0f6024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Natural_Resource_Data
+  Max_Uses: 10
+  Current_Uses: 0
+  uses_Per_Use: 1
 --- !u!1001 &7730130620747359395
 PrefabInstance:
   m_ObjectHideFlags: 0

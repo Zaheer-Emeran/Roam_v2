@@ -5,13 +5,14 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Resource_Finder", story: "Find nearest resource within [Radius] of [Workpoint] for [Working_Station] and store in [Resource_Position]", category: "Action", id: "abbfced33d5ee5da6cbf2503994e26dd")]
+[NodeDescription(name: "Resource_Finder", story: "Find nearest resource within [Radius] of [Workpoint] for [Working_Station] and store in [Resource_Position] and [Resource_Target]", category: "Action", id: "abbfced33d5ee5da6cbf2503994e26dd")]
 public partial class Resource_Finder_Action : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Workpoint;
     [SerializeReference] public BlackboardVariable<GameObject> Working_Station;
     [SerializeReference] public BlackboardVariable<float> Radius = new BlackboardVariable<float>(5f);
     [SerializeReference] public BlackboardVariable<Vector3> Resource_Position;
+    [SerializeReference] public BlackboardVariable<GameObject> Resource_Target;
 
 protected override Status OnStart()
 {
@@ -42,6 +43,7 @@ protected override Status OnStart()
                 Vector3 direction = (GameObject.transform.position - obj.transform.position).normalized;
                 Resource_Position.Value = obj.transform.position + direction * 0.25f;
                 found = true;
+                Resource_Target.Value = obj;
             }
         }
     }
