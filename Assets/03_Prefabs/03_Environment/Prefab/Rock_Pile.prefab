@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1812571877494542572}
   - component: {fileID: 3153909754433198266}
   - component: {fileID: -5670954413191339872}
+  - component: {fileID: -2598237867106809837}
   m_Layer: 0
   m_Name: Rock_Pile
   m_TagString: Rock
@@ -80,6 +81,26 @@ MonoBehaviour:
   Max_Uses: 10
   Current_Uses: 0
   uses_Per_Use: 1
+--- !u!114 &-2598237867106809837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274120129746590246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifier
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &7730130620747359395
 PrefabInstance:
   m_ObjectHideFlags: 0

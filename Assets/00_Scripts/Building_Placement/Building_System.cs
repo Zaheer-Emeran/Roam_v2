@@ -4,7 +4,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Unity.Behavior;
-
+using Unity.AI.Navigation;
 public class Building_System : MonoBehaviour
 {
         public const float Cell_Size = 1f;
@@ -22,13 +22,14 @@ public class Building_System : MonoBehaviour
         [SerializeField] private GameObject building_Manager_Object;
 
         [SerializeField] private Building_Description building_Description;
-        
+        [SerializeField] private NavMeshSurface surface;
 
         //Workpoint
         private Building work_Point_Owner;
 
         private Building_Preview preview;
 
+        
         private void Update()
         {
             Vector3 mousePos = GetMouseWorldPosition();
@@ -66,6 +67,8 @@ public class Building_System : MonoBehaviour
                 Destroy(preview.gameObject);
                 preview = null;
             }
+
+           
             
             building_Description.Set_Description(
                 "Description: " + data.Description + "\n\n" +
@@ -171,6 +174,7 @@ private void Handle_Preview(Vector3 mouse_World_Position)
             Destroy(preview.gameObject);
             preview = null;
         }
+        surface.BuildNavMesh();
         Hide_UI();
 
         
@@ -204,10 +208,24 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         }
 
 
-        public void Hide_UI(){
+        // public void Hide_UI(){
+        //     description_Object.SetActive(false);
+        //     building_Manager_Object.SetActive(false);
+            
+        // }
+
+        public void Hide_UI()
+        {
             description_Object.SetActive(false);
             building_Manager_Object.SetActive(false);
+
+            // RADIUS: hide every Radius_Mesh in the scene
+            foreach (Transform t in FindObjectsByType<Transform>(FindObjectsSortMode.None))
+            {
+                if (t.name == "Radius_Mesh") t.gameObject.SetActive(false);
+            }
         }
+        
 
        
 }

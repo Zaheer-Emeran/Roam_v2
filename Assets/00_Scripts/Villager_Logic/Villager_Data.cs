@@ -6,5 +6,8 @@ public class Villager_Data : MonoBehaviour
     public int Damage = 10;
     public bool Is_Working = false;
     public bool Is_Defending = false;
+    [SerializeField] private bool is_Ranged;
+
+    [SerializeField] public GameObject radius;
 
 }

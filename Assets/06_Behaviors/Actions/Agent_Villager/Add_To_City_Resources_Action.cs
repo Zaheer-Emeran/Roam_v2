@@ -14,9 +14,12 @@ public partial class Add_To_City_Resources_Action : Action
 
 protected override Status OnStart()
 {
+
     // 1. make sure everything we need exists
     if (Resource_Target.Value == null) return Status.Failure;
+
     if (Working_Station.Value == null) return Status.Failure;
+
     if (City_Resources.Value == null) return Status.Failure;
 
     // 2. get the production data from the building
@@ -51,6 +54,7 @@ protected override Status OnStart()
 
     // 5. add it to the city resources
     City_Resources.Value.Add_Resource(type, amount);
+
     return Status.Success;
 }
 }

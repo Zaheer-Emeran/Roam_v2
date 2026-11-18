@@ -19,7 +19,7 @@ public class Building_Manager : MonoBehaviour
 
     [SerializeField] private Building_System building_System;
     [SerializeField] private Building_Data workpoint_Data;
-
+    private GameObject current_Radius;
     private Building selected_Building;
     // private int temp_Workers;
 
@@ -79,6 +79,19 @@ public class Building_Manager : MonoBehaviour
             building_Manager_Object_UI.SetActive(true);
             Update_Workers_Text();
 
+            // RADIUS: hide the old one, show the new one
+            if (current_Radius != null) current_Radius.SetActive(false);
+            current_Radius = null;
+
+            foreach (Transform t in building.GetComponentsInChildren<Transform>(true))
+            {
+                if (t.name == "Radius_Mesh")
+                {
+                    Debug.Log("bloop");
+                    current_Radius = t.gameObject;
+                    current_Radius.SetActive(true);
+                }
+            }
         }
 
         }
@@ -180,6 +193,10 @@ public class Building_Manager : MonoBehaviour
         // selected_Building.Workers[last].GetComponent<Villager_Data>().Is_Working = false;
         selected_Building.Workers.RemoveAt(last);
         Update_Workers_Text();
+
+        
+
+        
     }
     private void Update_Workers_Text()
     {
@@ -214,6 +231,7 @@ public class Building_Manager : MonoBehaviour
                 // stop the current walk right away
                 UnityEngine.AI.NavMeshAgent nav = villager.GetComponent<UnityEngine.AI.NavMeshAgent>();
                 if (nav != null) nav.ResetPath();
+
             }
 
         agent.SetVariableValue("is_Working", working);

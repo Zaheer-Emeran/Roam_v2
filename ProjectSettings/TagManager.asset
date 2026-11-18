@@ -10,6 +10,7 @@ TagManager:
   - Raw_Material_Storage
   - Wood
   - Zombie
+  - Villager
   layers:
   - Default
   - TransparentFX

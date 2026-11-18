@@ -4,13 +4,19 @@ using Unity.Behavior;
 public class Villager_Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject villager;
+    [SerializeField] private GameObject City_Resources;
     [SerializeField] private Building_Grid grid;
 
    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            Instantiate(villager, transform.position, Quaternion.identity);
+            // Instantiate(villager, transform.position, Quaternion.identity);
+            GameObject new_Villager = Instantiate(villager, transform.position, Quaternion.identity);
+
+
+            BehaviorGraphAgent agent = new_Villager.GetComponent<BehaviorGraphAgent>();
+            agent.SetVariableValue("City_Resources", City_Resources);
         }
     }
 }

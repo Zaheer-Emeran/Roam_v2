@@ -18,13 +18,11 @@ public partial class Pick_Random_Point_Action : Action
 
         if (is_Defender.Value == true || is_Zombie.Value == true)
         {
-            // defender / zombie: the workpoint is the center
             if (Workpoint.Value == null) { return Status.Failure; }
             center = Workpoint.Value.transform.position;
         }
         else
         {
-            // 1. choose a random building that has Can_Passive_Wander ticked
             Building_Grid grid = Object.FindFirstObjectByType<Building_Grid>();
             if (grid == null) { return Status.Failure; }
 
@@ -37,8 +35,15 @@ public partial class Pick_Random_Point_Action : Action
 
         // 2. choose a random point around the center
         Vector2 offset = Random.insideUnitCircle * Radius.Value;
-        Wander_Position.Value = center + new Vector3(offset.x, 0, offset.y);
+        Vector3 point = center + new Vector3(offset.x, 0, offset.y);
 
-        return Status.Success;
+        // 3. snap it onto the NavMesh
+        if (UnityEngine.AI.NavMesh.SamplePosition(point, out UnityEngine.AI.NavMeshHit hit, 2f, UnityEngine.AI.NavMesh.AllAreas))
+        {
+            Wander_Position.Value = hit.position;
+            return Status.Success;
+        }
+
+        return Status.Failure;
     }
 }
