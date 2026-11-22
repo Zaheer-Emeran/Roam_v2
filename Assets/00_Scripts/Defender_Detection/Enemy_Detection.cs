@@ -16,25 +16,20 @@ public class Enemy_Detection : MonoBehaviour
     }
 
     public void Enemy_Entered(Collider other)
+{
+    // already fighting: ignore
+    if (agent.GetVariable("is_In_Combat", out BlackboardVariable<bool> in_Combat) && in_Combat.Value == true) return;
+
+    if (CompareTag("Zombie") && other.CompareTag("Zombie")) return;
+    if (villager != null && !villager.Is_Defending) return;
+
+    if (other.CompareTag("Zombie") || other.CompareTag("Villager"))
     {
-        if (villager != null && !villager.Is_Defending) return;
-
-        if (other.CompareTag("Zombie"))
-        {
-            agent.SetVariableValue("is_In_Combat", true);
-            agent.SetVariableValue("Enemy", other.gameObject);
-            agent.Restart();
-        }
-
-        if (other.CompareTag("Villager"))
-        {
-            Debug.Log("BLoop");
-            agent.SetVariableValue("is_In_Combat", true);
-            agent.SetVariableValue("Enemy", other.gameObject);
-            agent.Restart();
-        }
-
+        agent.SetVariableValue("is_In_Combat", true);
+        agent.Restart();
+        // no Enemy here: the Combat_Manager decides the target
     }
+}
 
     public class Detection_Relay : MonoBehaviour
     {

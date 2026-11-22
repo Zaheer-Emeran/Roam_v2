@@ -8,9 +8,10 @@ public class Building : MonoBehaviour
 
     [SerializeField] private float build_Time = 5f;
     [SerializeField] private Material grey_Material;
-
+    public bool Is_Defence_Workpoint;
     private Building_Model model;
     private Building_Data data;
+
 
      // TIMER: remembers the real materials so they can be restored later
     private Renderer[] renderers;

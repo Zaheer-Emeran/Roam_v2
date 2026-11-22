@@ -153,7 +153,9 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         // WORKPOINT: link the new workpoint to the building it was placed for
         if (work_Point_Owner != null)
         {
+            
             work_Point_Owner.Work_Point = building;
+            building.Is_Defence_Workpoint = work_Point_Owner.Data.is_Defence_Building;
             // give the workpoint to villagers who were assigned before it existed
             foreach (GameObject worker in work_Point_Owner.Workers)
             {

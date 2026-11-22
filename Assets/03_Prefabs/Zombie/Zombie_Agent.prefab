@@ -108,7 +108,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -171,7 +171,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 4458675512475988898}
   - component: {fileID: 1293156843590053329}
   - component: {fileID: -4536784353795434719}
+  - component: {fileID: -58547986795048871}
   m_Layer: 0
   m_Name: Zombie_Agent
   m_TagString: Zombie
@@ -445,3 +446,22 @@ MonoBehaviour:
   detection_Radius: {fileID: 5590141944209307573}
   villager: {fileID: 0}
   agent: {fileID: 4458675512475988898}
+--- !u!114 &-58547986795048871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119560630082071417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec142519e8552844b48b45467400924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fighter
+  Health: 45
+  Damage: 5
+  Is_Working: 0
+  Is_Defending: 0
+  Is_Zombie: 1
+  is_Ranged: 0
+  radius: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed2785c14050464e80b754afca9a801, type: 3}
   m_Name: Barracks
   m_EditorClassIdentifier: Assembly-CSharp::Building_Data
-  <Description>k__BackingField: Upskill the Manskap
+  <Description>k__BackingField: Upskill the Manskapp
   <Cost>k__BackingField: 25
   <Wood>k__BackingField: 10
   <Rock>k__BackingField: 10
@@ -21,4 +21,5 @@ MonoBehaviour:
   <Drag_Place>k__BackingField: 0
   <Can_Passive_Wander>k__BackingField: 0
   <is_Defence_Building>k__BackingField: 1
+  <Is_Workpoint>k__BackingField: 0
   <Production>k__BackingField: {fileID: 11400000, guid: 07d055290835c84478fd3fa12e26a39a, type: 2}
