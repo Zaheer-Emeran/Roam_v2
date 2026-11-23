@@ -29,6 +29,8 @@ public class Building_System : MonoBehaviour
 
         private Building_Preview preview;
 
+        [SerializeField] private float defence_Radius = 6f;
+        private const float Default_Radius = 3f;
         
         private void Update()
         {
@@ -82,10 +84,16 @@ public class Building_System : MonoBehaviour
 
         // WORKPOINT: start placing a workpoint for a specific building
         public void Select_Workpoint(Building_Data data, Building owner)
+    {
+        Select_Building(data);
+        work_Point_Owner = owner;   // set after Select_Building, which clears it
+
+        // DEFENCE: show the bigger radius on the preview too
+        if (owner.Data.is_Defence_Building)
         {
-            Select_Building(data);
-            work_Point_Owner = owner;   // set after Select_Building, which clears it
+            Set_Workpoint_Radius(preview, defence_Radius);
         }
+    }
 
 private void Handle_Preview(Vector3 mouse_World_Position)
 {
@@ -156,6 +164,8 @@ private void Handle_Preview(Vector3 mouse_World_Position)
             
             work_Point_Owner.Work_Point = building;
             building.Is_Defence_Workpoint = work_Point_Owner.Data.is_Defence_Building;
+
+            
             // give the workpoint to villagers who were assigned before it existed
             foreach (GameObject worker in work_Point_Owner.Workers)
             {
@@ -169,6 +179,10 @@ private void Handle_Preview(Vector3 mouse_World_Position)
         city_resources.Change_Rock(-preview.Data.Rock);
         
         building.Setup(preview.Data, preview.Building_Model.Rotation);
+        if (building.Is_Defence_Workpoint)
+        {
+            Set_Workpoint_Radius(building, defence_Radius);
+        }
         grid.Set_Building(building, building_Positions);
         // DRAG: pathways keep the preview so you can keep placing, everything else clears it
         if (!preview.Data.Drag_Place)
@@ -181,6 +195,21 @@ private void Handle_Preview(Vector3 mouse_World_Position)
 
         
 
+    }
+
+   private void Set_Workpoint_Radius(Component workpoint_Component, float new_Radius)
+    {
+        CapsuleCollider radius_Collider = workpoint_Component.GetComponentInChildren<CapsuleCollider>(true);
+        if (radius_Collider != null) radius_Collider.radius = new_Radius;
+
+        foreach (Transform child_Transform in workpoint_Component.GetComponentsInChildren<Transform>(true))
+        {
+            if (child_Transform.name == "Radius_Mesh")
+            {
+                child_Transform.localScale *= new_Radius / Default_Radius;
+                child_Transform.gameObject.SetActive(true);
+            }
+        }
     }
 
     private Vector3 Get_Snapped_Center_Position(List<Vector3> allBuildingPositions)

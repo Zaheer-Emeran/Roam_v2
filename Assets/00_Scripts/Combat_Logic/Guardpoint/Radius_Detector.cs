@@ -44,25 +44,25 @@ public class Radius_Detector : MonoBehaviour
     }
 
 
-    // private void OnTriggerExit(Collider other_Collider)
-    // {
-    //     if (!Is_Defence_Building()) return;
+    private void OnTriggerExit(Collider other_Collider)
+    {
+        if (!Is_Defence_Building()) return;
 
-    //     Villager_Data villager_Data = other_Collider.GetComponentInParent<Villager_Data>();
-    //     if (villager_Data != null)
-    //     {
-    //         Defending_Villagers.Remove(villager_Data.gameObject);
-    //         // combat_Handler.Debug_Agents();f
-    //         return;
-    //     }
+        Villager_Data villager_Data = other_Collider.GetComponentInParent<Villager_Data>();
+        if (villager_Data != null)
+        {
+            Defending_Villagers.Remove(villager_Data.gameObject);
+            // combat_Handler.Debug_Agents();f
+            return;
+        }
 
-    //     if (!other_Collider.CompareTag("Zombie")) return;
+        if (!other_Collider.CompareTag("Zombie")) return;
 
-    //     Entered_Zombies.Remove(other_Collider.gameObject);
+        Entered_Zombies.Remove(other_Collider.gameObject);
 
-    //     // combat_Handler.Debug_Agents();
+        // combat_Handler.Debug_Agents();
 
-    // }
+    }
 
 
     private void Try_Add_Defending_Villager(GameObject villager_Object)

@@ -46,7 +46,7 @@ public class Building_Manager : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
         {
             if (hit.collider.CompareTag("Pathway"))
         {
