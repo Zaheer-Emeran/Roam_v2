@@ -1,17 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Behavior;
 
 public class Combat_Handler : MonoBehaviour
 {
     public List<GameObject> Entered_Zombies = new List<GameObject>();
     public List<GameObject> Defending_Villagers = new List<GameObject>();
 
-    public void Start_Combat()
+        public void Start_Combat()
     {
         Entered_Zombies.RemoveAll(zombie_Object => zombie_Object == null);
         Defending_Villagers.RemoveAll(villager_Object => villager_Object == null);
 
         if (Entered_Zombies.Count == 0 || Defending_Villagers.Count == 0) return;
+
+        HashSet<GameObject> assigned_Agents = new HashSet<GameObject>();
 
         int fight_Count = Mathf.Max(Entered_Zombies.Count, Defending_Villagers.Count);
 
@@ -20,25 +23,66 @@ public class Combat_Handler : MonoBehaviour
             int villager_Index = Mathf.Min(fight_Index, Defending_Villagers.Count - 1);
             int zombie_Index = Mathf.Min(fight_Index, Entered_Zombies.Count - 1);
 
-            Debug.Log(Defending_Villagers[villager_Index].name + " Fights: " + Entered_Zombies[zombie_Index].name);
-        }
-    }
+            GameObject villager_Object = Defending_Villagers[villager_Index];
+            GameObject zombie_Object = Entered_Zombies[zombie_Index];
 
-    public List<GameObject> Debug_Agents()
-    {
-        List<GameObject> all_Agents = new List<GameObject>();
-
-        all_Agents.AddRange(Entered_Zombies);
-        all_Agents.AddRange(Defending_Villagers);
-
-        foreach (GameObject agent_Object in all_Agents)
-        {
-            if (agent_Object != null)
+            // an agent only gets its Enemy the first time it appears
+            if (assigned_Agents.Add(villager_Object))
             {
-                Debug.Log("Agent: " + agent_Object.name, agent_Object);
+                Assign_Attackers_And_Blockers(villager_Object, zombie_Object);
             }
-        }
 
-        return all_Agents;
+            if (assigned_Agents.Add(zombie_Object))
+            {
+                Assign_Attackers_And_Blockers(zombie_Object, villager_Object);
+            }
+
+            Debug.Log(villager_Object.name + " Fights: " + zombie_Object.name);
+        }
     }
+
+
+
+    private void Assign_Attackers_And_Blockers(GameObject agent_Object, GameObject enemy_Object)
+{
+    BehaviorGraphAgent behavior_Agent = agent_Object.GetComponent<BehaviorGraphAgent>();
+    if (behavior_Agent == null) return;
+
+    // only restart agents that are not already in combat
+    bool was_In_Combat = false;
+    if (behavior_Agent.GetVariable("is_In_Combat", out BlackboardVariable<bool> in_Combat_Variable))
+    {
+        was_In_Combat = in_Combat_Variable.Value;
+    }
+
+    if (!was_In_Combat)
+    {
+        behavior_Agent.Restart();
+
+        UnityEngine.AI.NavMeshAgent nav_Agent = agent_Object.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (nav_Agent != null) nav_Agent.ResetPath();
+    }
+
+    // set the variables AFTER the restart, same order as Set_Working
+    behavior_Agent.SetVariableValue("is_In_Combat", true);
+    behavior_Agent.SetVariableValue("Enemy", enemy_Object);
+}
+
+    // public List<GameObject> Debug_Agents()
+    // {
+    //     List<GameObject> all_Agents = new List<GameObject>();
+
+    //     all_Agents.AddRange(Entered_Zombies);
+    //     all_Agents.AddRange(Defending_Villagers);
+
+    //     foreach (GameObject agent_Object in all_Agents)
+    //     {
+    //         if (agent_Object != null)
+    //         {
+    //             Debug.Log("Agent: " + agent_Object.name, agent_Object);
+    //         }
+    //     }
+
+    //     return all_Agents;
+    // }
 }
