@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Unity.Behavior;
 public class Fighter : MonoBehaviour
 {
     public int Health = 100;
@@ -11,7 +11,39 @@ public class Fighter : MonoBehaviour
     [SerializeField] private bool is_Ranged;
     [SerializeField] public GameObject radius;
 
+
+    public void Deal_Damage(Fighter target_Fighter)
+    {
+        if (target_Fighter == null) return;
+
+        target_Fighter.Health -= Damage;
+        target_Fighter.Dies_To_Combat_Damage();
+    }
+
+    public void Dies_To_Combat_Damage()
+    {
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void Post_Combat_Cleanup()
+    {
+        BehaviorGraphAgent behavior_Agent = GetComponent<BehaviorGraphAgent>();
+        if (behavior_Agent == null) return;
+
+        behavior_Agent.SetVariableValue("is_In_Combat", false);
+        behavior_Agent.SetVariableValue("Enemy", (GameObject)null);
+
+        UnityEngine.AI.NavMeshAgent nav_Agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (nav_Agent != null) nav_Agent.ResetPath();
+    }
+
+
 }
+
+
 
 /*
     public bool Is_Zombie;

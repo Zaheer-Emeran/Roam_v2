@@ -7,7 +7,52 @@ public class Combat_Handler : MonoBehaviour
     public List<GameObject> Entered_Zombies = new List<GameObject>();
     public List<GameObject> Defending_Villagers = new List<GameObject>();
 
-        public void Start_Combat()
+    private float check_Timer;
+
+
+    private void Update()
+    {
+        check_Timer -= Time.deltaTime;
+        if (check_Timer > 0f) return;
+        check_Timer = 0.25f;
+
+        Entered_Zombies.RemoveAll(zombie_Object => zombie_Object == null);
+        Defending_Villagers.RemoveAll(villager_Object => villager_Object == null);
+
+        bool someone_Was_Freed = false;
+
+        foreach (GameObject zombie_Object in Entered_Zombies)
+        {
+            if (Free_If_Enemy_Is_Gone(zombie_Object)) someone_Was_Freed = true;
+        }
+
+        foreach (GameObject villager_Object in Defending_Villagers)
+        {
+            if (Free_If_Enemy_Is_Gone(villager_Object)) someone_Was_Freed = true;
+        }
+
+        if (someone_Was_Freed) Start_Combat();
+    }
+
+    private bool Free_If_Enemy_Is_Gone(GameObject agent_Object)
+    {
+        BehaviorGraphAgent behavior_Agent = agent_Object.GetComponent<BehaviorGraphAgent>();
+        if (behavior_Agent == null) return false;
+
+        if (!behavior_Agent.GetVariable("is_In_Combat", out BlackboardVariable<bool> in_Combat_Variable)) return false;
+        if (!in_Combat_Variable.Value) return false;
+
+        if (!behavior_Agent.GetVariable("Enemy", out BlackboardVariable<GameObject> enemy_Variable)) return false;
+        if (enemy_Variable.Value != null) return false;
+
+        agent_Object.GetComponent<Fighter>().Post_Combat_Cleanup();
+        return true;
+    }
+    
+    
+    
+    
+    public void Start_Combat()
     {
         Entered_Zombies.RemoveAll(zombie_Object => zombie_Object == null);
         Defending_Villagers.RemoveAll(villager_Object => villager_Object == null);
@@ -37,7 +82,7 @@ public class Combat_Handler : MonoBehaviour
                 Assign_Attackers_And_Blockers(zombie_Object, villager_Object);
             }
 
-            Debug.Log(villager_Object.name + " Fights: " + zombie_Object.name);
+            // Debug.Log(villager_Object.name + " Fights: " + zombie_Object.name);
         }
     }
 
